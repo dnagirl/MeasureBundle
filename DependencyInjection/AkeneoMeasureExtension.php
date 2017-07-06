@@ -2,10 +2,10 @@
 
 namespace Akeneo\Bundle\MeasureBundle\DependencyInjection;
 
-use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -23,32 +23,14 @@ class AkeneoMeasureExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         // retrieve each measure config from bundles
-        $measuresConfig = [];
+	    $configs = array();
         foreach ($container->getParameter('kernel.bundles') as $bundle) {
             $reflection = new \ReflectionClass($bundle);
-            if (is_file($file = dirname($reflection->getFilename()).'/Resources/config/measure.yml')) {
-                // merge measures configs
-                if (empty($measuresConfig)) {
-                    $measuresConfig = Yaml::parse(file_get_contents(realpath($file)));
-                } else {
-                    $entities = Yaml::parse(file_get_contents(realpath($file)));
-                    foreach ($entities['measures_config'] as $family => $familyConfig) {
-                        // merge result with already existing family config to add custom units
-                        if (isset($measuresConfig['measures_config'][$family])) {
-                            $measuresConfig['measures_config'][$family]['units'] =
-                                array_merge(
-                                    $measuresConfig['measures_config'][$family]['units'],
-                                    $familyConfig['units']
-                                );
-                        } else {
-                            $measuresConfig['measures_config'][$family] = $familyConfig;
-                        }
-                    }
-                }
+            if (is_file($file = dirname($reflection->getFilename()).'/Resources/config/measure.yml')) { //has a measure.yml file
+	            $configs[] = Yaml::parse(file_get_contents(realpath($file)));
             }
         }
-        $configs[] = $measuresConfig;
-        // process configurations to validate and merge
+
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
@@ -60,6 +42,6 @@ class AkeneoMeasureExtension extends Extension
 
         $container
             ->getDefinition('akeneo_measure.manager')
-            ->addMethodCall('setMeasureConfig', $config);
+            ->addMethodCall('setMeasureConfig', [$config['measures_config']]);
     }
 }

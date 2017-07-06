@@ -23,28 +23,30 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('akeneo_measure');
 
         $rootNode->children()
-            ->arrayNode('measures_config')
+          ->arrayNode('measures_config')
+            ->useAttributeAsKey('name')
+            ->info('key is measurement family, e.g. Weight')
             ->prototype('array')
-            ->children()
-
-                // standard unit (used as reference for conversion)
-                ->scalarNode('standard')
-                ->isRequired()
-                ->end()
-
-                // units of this group
-                ->arrayNode('units')
-                ->prototype('array')
                 ->children()
-
-                    ->append($this->addConvertNode())
-
-                    ->scalarNode('symbol')
-                    ->isRequired()
-                    ->end()
+	                ->scalarNode('standard')
+	                    ->isRequired()
+	                    ->info('standard unit (used as reference for conversion)')
+	                ->end()
+	                ->arrayNode('units')
+	                    ->useAttributeAsKey('name')
+	                    ->info('list of units for this family')
+			            ->prototype('array')
+				            ->children()
+				                ->append($this->addConvertNode())
+				                ->scalarNode('symbol')
+				                    ->isRequired()
+			                    ->end()
+			                ->end()
+	                    ->end()
+	                ->end()
                 ->end()
-
-            ->end();
+            ->end()
+          ->end();
 
         return $treeBuilder;
     }
