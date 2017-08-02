@@ -14,27 +14,27 @@ measures_config:
             SQUARE_METER:
                 convert: [{'mul': 1}]
                 symbol: m²
-            CENTIARE:
-                convert: [{'mul': 1}]
-                symbol: ca
             SQUARE_DEKAMETER:
                 convert: [{'mul': 100}]
                 symbol: dam²
-            ARE:
-                convert: [{'mul': 100}]
-                symbol: a
             SQUARE_HECTOMETER:
                 convert: [{'mul': 10000}]
                 symbol: hm²
-            HECTARE:
-                convert: [{'mul': 10000}]
-                symbol: ha
             SQUARE_KILOMETER:
                 convert: [{'mul': 1000000}]
                 symbol: km²
-            SQUARE_MIL:
-                convert: [{'mul': 0.00000000064516}]
-                symbol: sq mil
+            CENTIARE:
+                convert: [{'mul': 1}]
+                symbol: ca
+            ARE:
+                convert: [{'mul': 100}]
+                symbol: a
+            HECTARE:
+                convert: [{'mul': 10000}]
+                symbol: ha
+            ACRE:
+                convert: [{mul: 4046.856422}]
+                symbol: A
             SQUARE_INCH:
                 convert: [{'mul': 0.00064516}]
                 symbol: in²
@@ -44,18 +44,18 @@ measures_config:
             SQUARE_YARD:
                 convert: [{'mul': 0.83612736}]
                 symbol: yd²
-            ARPENT:
-                convert: [{'mul': 3418.89}]
-                symbol: arpent
-            ACRE:
-                convert: [{mul: 4046.856422}]
-                symbol: A
             SQUARE_FURLONG:
                 convert: [{'mul': 40468.726}]
                 symbol: fur²
             SQUARE_MILE:
                 convert: [{'mul': 2589988.110336}]
                 symbol: mi²
+            ARPENT:
+                convert: [{'mul': 3418.89}]
+                symbol: arpent
+            SQUARE_MIL:
+                convert: [{'mul': 0.00000000064516}]
+                symbol: sq mil
     Binary:
         standard: BYTE
         units:
@@ -125,9 +125,6 @@ measures_config:
             KILOMETER:
                 convert: [{'mul': 1000}]
                 symbol: km
-            MIL:
-                convert: [{'mul': 0.0000254}]
-                symbol: mil
             INCH:
                 convert: [{'mul': 0.0254}]
                 symbol: in
@@ -146,6 +143,9 @@ measures_config:
             MILE:
                 convert: [{'mul': 1609.344}]
                 symbol: mi
+            MIL:
+                convert: [{'mul': 0.0000254}]
+                symbol: mil
     Power:
         standard: WATT
         units:
@@ -333,53 +333,71 @@ measures_config:
                 convert: [{'mul': 1.25}, {'add': 273.15}]
                 symbol: °r
     Volume:
-        standard: CUBIC_METER
+        standard: LITER
         units:
-            CUBIC_MILLIMETER:
-                convert: [{'mul': 0.000000001}]
-                symbol: mm³
-            CUBIC_CENTIMETER:
+            MICROLITER:
                 convert: [{'mul': 0.000001}]
-                symbol: cm³
+                symbol: µl
             MILLILITER:
-                convert: [{'mul': 0.000001}]
+                convert: [{'mul': 0.001}]
                 symbol: ml
             CENTILITER:
-                convert: [{'mul': 0.00001}]
+                convert: [{'mul': 0.01}]
                 symbol: cl
             DECILITER:
-                convert: [{'mul': 0.0001}]
+                convert: [{'mul': 0.1}]
                 symbol: dl
-            CUBIC_DECIMETER:
-                convert: [{'mul': 0.001}]
-                symbol: dm³
             LITER:
-                convert: [{'mul': 0.001}]
-                symbol: l
-            CUBIC_METER:
                 convert: [{'mul': 1}]
-                symbol: m³
+                symbol: L
             OUNCE:
-                convert: [{'mul': 0.00454609}, {'div': 160}]
-                symbol: oz
+                convert: [{'mul': 4.54609}, {'div': 160}]
+                symbol: fl.oz
             PINT:
-                convert: [{'mul': 0.00454609}, {'div': 8}]
+                convert: [{'mul': 4.54609}, {'div': 8}]
                 symbol: pt
-            BARREL:
-                convert: [{'mul': 0.16365924}]
-                symbol: bbl
+            QUART:
+                convert: [{'mul': 0.946353}]
+                symbol: qt
             GALLON:
-                convert: [{'mul': 0.00454609}]
+                convert: [{'mul': 4.54609}]
                 symbol: gal
+            USOUNCE:
+                convert: [{'mul': 0.0295735}]
+                symbol: fl.oz(US)
+            USPINT:
+                convert: [{'mul': 0.473176}]
+                symbol: pt(US)
+            USQUART:
+                convert: [{'mul': 0.946353}]
+                symbol: qt(US)
+            USGALLON:
+                convert: [{'mul': 3.78541}]
+                symbol: gal
+            CUBIC_MILLIMETER:
+                convert: [{'mul': 0.000001}]
+                symbol: mm³
+            CUBIC_CENTIMETER:
+                convert: [{'mul': 0.001}]
+                symbol: cm³
+            CUBIC_DECIMETER:
+                convert: [{'mul': 1}]
+                symbol: dm³
+            CUBIC_METER:
+                convert: [{'mul': 1000}]
+                symbol: m³
             CUBIC_FOOT:
-                convert: [{'mul': 6.54119159}, {'div': 231}]
+                convert: [{'mul': 6541.19159}, {'div': 231}]
                 symbol: ft³
             CUBIC_INCH:
-                convert: [{'mul': 0.0037854118}, {'div': 231}]
+                convert: [{'mul': 3.7854118}, {'div': 231}]
                 symbol: in³
             CUBIC_YARD:
-                convert: [{'mul': 0.764554861}]
+                convert: [{'mul': 764.554861}]
                 symbol: yd³
+            BARREL:
+                convert: [{'mul': 163.65924}]
+                symbol: bbl
     Weight:
         standard: KILOGRAM
         units:
@@ -392,6 +410,12 @@ measures_config:
             KILOGRAM:
                 convert: [{'mul': 1}]
                 symbol: kg
+            OUNCE:
+                convert: [{'mul': 0.45359237}, {'div': 16}]
+                symbol: oz
+            POUND:
+                convert: [{'mul': 0.45359237}]
+                symbol: lb
             TON:
                 convert: [{'mul': 1000}]
                 symbol: t
@@ -410,12 +434,6 @@ measures_config:
             LIVRE:
                 convert: [{'mul': 0.4895}]
                 symbol: livre
-            OUNCE:
-                convert: [{'mul': 0.45359237}, {'div': 16}]
-                symbol: oz
-            POUND:
-                convert: [{'mul': 0.45359237}]
-                symbol: lb
     Pressure:
         standard: BAR
         units:
