@@ -350,7 +350,7 @@ measures_config:
             LITER:
                 convert: [{'mul': 1}]
                 symbol: L
-            OUNCE:
+            FLOUNCE:
                 convert: [{'mul': 4.54609}, {'div': 160}]
                 symbol: fl.oz
             PINT:
@@ -362,7 +362,7 @@ measures_config:
             GALLON:
                 convert: [{'mul': 4.54609}]
                 symbol: gal
-            USOUNCE:
+            USFLOUNCE:
                 convert: [{'mul': 0.0295735}]
                 symbol: fl.oz(US)
             USPINT:
