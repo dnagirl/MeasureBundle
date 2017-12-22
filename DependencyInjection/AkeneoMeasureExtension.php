@@ -2,6 +2,7 @@
 
 namespace Akeneo\Bundle\MeasureBundle\DependencyInjection;
 
+use Akeneo\Bundle\MeasureBundle\Manager\MeasureManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -41,7 +42,7 @@ class AkeneoMeasureExtension extends Extension
         $container->setParameter('akeneo_measure.measures_config', $config);
 
         $container
-            ->getDefinition('akeneo_measure.manager')
+            ->getDefinition(MeasureManager::class)
             ->addMethodCall('setMeasureConfig', [$config['measures_config']]);
     }
 }
