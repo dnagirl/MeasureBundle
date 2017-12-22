@@ -10,4 +10,5 @@ services:
     Akeneo\Bundle\MeasureBundle\Manager\MeasureManager:
         arguments: []
         
-    akeneo_measure.measure_converter: '@Akeneo\Bundle\MeasureBundle\Convert\MeasureConverter'    
+    akeneo_measure.measure_converter: '@Akeneo\Bundle\MeasureBundle\Convert\MeasureConverter'
+    akeneo_measure.manager: '@Akeneo\Bundle\MeasureBundle\Manager\MeasureManager'
