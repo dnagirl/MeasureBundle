@@ -124,7 +124,8 @@ DECILITER: Décilitre
 GALLON: Gallon
 LITER: Litre
 MILLILITER: Millilitre
-OUNCE: Once
+FLOUNCE: Once
+USFLOUNCE: Once (E.U.)
 PINT: Pinte
 Weight: Poids
 DENIER: Denier
