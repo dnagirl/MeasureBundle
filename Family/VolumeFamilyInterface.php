@@ -85,7 +85,12 @@ interface VolumeFamilyInterface
     /**
      * @staticvar string
      */
-    const OUNCE            = 'OUNCE';
+    const FLOUNCE            = 'FLOUNCE';
+   
+    /**     
+    * @staticvar string     
+    */    
+    const USFLOUNCE            = 'USFLOUNCE';
 
     /**
      * @staticvar string
