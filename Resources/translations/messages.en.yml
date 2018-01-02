@@ -137,7 +137,8 @@ DECILITER:        Deciliter
 GALLON:           Gallon
 LITER:            Liter
 MILLILITER:       Milliliter
-OUNCE:            Ounce
+FLOUNCE:          Fluid Ounce
+USFLOUNCE:        U.S. Fluid Ounce
 PINT:             Pint
 
 Weight:    Weight
