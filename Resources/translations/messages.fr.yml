@@ -124,7 +124,8 @@ DECILITER: Décilitre
 GALLON: Gallon
 LITER: Litre
 MILLILITER: Millilitre
-OUNCE: Once
+FLOUNCE: Once
+UNFLOUNCE: Once(E.U.)
 PINT: Pinte
 Weight: Poids
 DENIER: Denier
@@ -134,7 +135,7 @@ KILOGRAM: Kilogramme
 LIVRE: Livre
 MARC: Marc
 MILLIGRAM: Milligramme
-ONCE: Once
+OUNCE: Once
 POUND: Livre
 TON: Tonne
 Pressure: Pression
